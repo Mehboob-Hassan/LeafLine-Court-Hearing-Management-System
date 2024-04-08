@@ -1,6 +1,18 @@
+import { ColorModeContext, useMode } from './theme';
+import { ThemeProvider, CssBaseline } from '@emotion/react';
+
 function App() {
+  const [theme, colorMode] = useMode()
+
   return (
-    <div className="app">Hello Bro</div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="app">
+          <main className='content'></main>
+        </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
